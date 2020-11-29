@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DailyMix Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body class="results">
+    <textarea readonly name="dailyresultlist" class="resultlist">{{sended_file}}</textarea>
+    <form action="/" class="centered">
+        <button type="submit" class="button_blue">Back</button>
+    </form>
+</body>
+
+</html>

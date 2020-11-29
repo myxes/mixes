@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FriendsMix Settings</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body class="settings">
+    <div class="row">
+        <form action="/save_friends/" method="POST" class="centered">
+            <p class="simpletext">Your friends:</p>
+            <textarea name="friendlist" class="friendinput"
+                placeholder="spotify-uri:real name&#10spotify-uri:real name&#10spotify-uri:real name">{% for element in sended_friends.keys() %}
+{{element}}:{{sended_friends[element]}}{% endfor %}</textarea>
+            <p class="simpletext">Playlistsize:</p>
+            <input type="number" value={{sended_size}} name="playsize" min="1" max="100" class="numberinput">
+            <p class="simpletext">Select the number of days:</p>
+            <input type="number" value={{sended_days}} name="days" min="0" class="numberinput"><br><br>
+            <label class="simpletext">Filter songs with explicit content: </label>
+            <input type="checkbox" name="filterexplicit" {{sended_explicit}} class="filter"><br>
+            <p class="simpletext">Presetname:</p>
+            <input type="text" value={{sended_presetname}} name="presetname" minlength="3" maxlength="20" class="numberinput"><br><br>
+            <div class="columnoneofthree">
+                <button type="submit" class="button_orange">Save</button><br>
+            </div>
+        </form>
+        <div class="columntwoofthree">
+            <form action="/delete_preset/" class="centered">
+                <button type="submit" class="button_orange">Delete</button>
+            </form>
+        </div>
+        <div class="columnthreeofthree">
+            <form action="/" class="centered">
+                <button type="submit" class="button_orange">Back</button>
+            </form>
+        </div>
+    </div>
+    <div class="dropdown_presets">
+        <button class="button_orange">Presets</button>
+        <div class="dropdown-content_presets">
+            {% for element in sended_presets.keys() %}
+            <form action="/friendsmix/" class="centered", method="POST">
+                <input type="hidden" value={{element}} name="selectedpreset" class="hiddeninput">
+                <a class="dropdownlist" onclick="this.closest('form').submit();return false;">{{element}}</a>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

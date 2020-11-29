@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DailyMix Settings</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body class="settings">
+    <div class="row">
+        <p class="simpletext">Playlistsize:</p>
+        <form action="/save_daily/" method="POST" class="centered" name="playsize">
+            <input type="number" value={{sended_size}} min="1" max="100" name="playsize" class="numberinput"><br><br>
+            <label class="simpletext">Filter songs with explicit content: </label>
+            <input type="checkbox" name="filterexplicit" {{sended_explicit}} class="filter"><br><br>
+            <div class="columnoneoftwo">
+                <button type="submit" class="button_orange">Save</button>
+            </div>
+        </form>
+        <form action="/" class="centered">
+            <div class="columntwooftwo">
+                <button type="submit" class="button_orange">Back</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

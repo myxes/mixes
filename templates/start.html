@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Start</title>
+	<!--<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static',filename='styles/webicon.ico') }}">-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body class="start">
+	<div class="row">
+		<div class="columnstart">
+			<p class="friends">
+				<h1>My Friends Mix</h1>
+				<form action="/generating_friends/" method="post" class="centered">
+					<button type="submit" class="button_green">Generate</button>
+				</form>
+				<form action="/friendsmix/" method="post">
+					<button type="submit" class="button_orange">Settings</button>
+				</form>
+				<form action="/friendsresults/" method="post">
+					<button type="submit" class="button_blue">Results</button>
+				</form>
+				</form>
+			</p>
+		</div>
+
+		<div class="columnstart">
+			<p class="daily">
+				<h1>My Daily Mix</h1>
+				<form action="/generating_daily/" method="post" class="centered">
+					<button type="submit" class="button_green">Generate</button>
+				</form>
+				<form action="/dailymix/" method="post">
+					<button type="submit" class="button_orange">Settings</button>
+				</form>
+				<form action="/dailyresults/" method="post">
+					<button type="submit" class="button_blue">Results</button>
+				</form>
+			</p>
+		</div>
+	</div>
+	<div class="popup" onclick="showVersionInfo()">Version
+		<span class="popuptext" id="versionPopup">
+			Your version: {{sended_your_version}}<br>
+			Latest version: {{sended_actual_version}}<br>
+			<a href={{sended_path}}>Download</a>
+		</span>
+	</div>
+	<script>
+		// When the user clicks on <div>, open the popup
+		function showVersionInfo() {
+			var popup = document.getElementById("versionPopup");
+			popup.classList.toggle("show");
+		}
+	</script>
+</body>
+
+</html>

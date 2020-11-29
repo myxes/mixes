@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FriendsMix Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body class="results">
+    <textarea readonly name="friendresultlist" class="friendresultlist">{{sended_lines}}</textarea><br>
+    <textarea readonly name="friendcount" class="friendcount">{{sended_friends}}</textarea><br><br>
+    <div class="dropdown_results">
+        <button class="button_blue">Songs</button>
+        <div class="dropdown-content_results">
+            {% for song in sended_songs %}
+            <form action="/friendsresults/" class="centered", method="POST">
+                <input type="hidden" value={{song[0]}} name="selectedsong" class="hiddeninput">
+                <a class="dropdownlist" onclick="this.closest('form').submit();return false;">{{song[1]}} - {{song[2]}}</a>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <input readonly type="text" value="{{sended_song[4]}}" name="presetname" class="numberinput">
+    <input readonly type="text" value="{{sended_song[5]}}" name="presetname" class="numberinput">
+    <input readonly type="text" value="{{sended_song[3]}}" name="presetname" class="numberinput"></input><br><br>
+    <div class="row">
+        <form action="/friendsresults/" class="centered">
+            <div class="columnoneoftwo">
+                <button onclick="window.print()" class="button_blue">Print</button>
+            </div>
+        </form>
+        <form action="/" class="centered">
+            <div class="columntwooftwo">
+                <button type="submit" class="button_blue">Back</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
